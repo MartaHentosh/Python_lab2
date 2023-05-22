@@ -1,7 +1,14 @@
+"""
+module:fridge_camera
+This module provides Fridge Camera class
+"""
 from models.fridge import Fridge
 
 
 class FridgeCamera(Fridge):
+    """
+    Class represents fridge camera
+    """
     VOLUME_PER_KILOGRAM = 0.01
 
     def __init__(self, brand, model, capacity, entries, belt_type, belt_speed, max_sausage_weight):
