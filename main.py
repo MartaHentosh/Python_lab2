@@ -22,7 +22,20 @@ if __name__ == "__main__":
     fridgeManager.add_fridge(Minibar("MYSTERY", "CS 15141 M", 46, 40, 40))
     fridgeManager.add_fridge(Minibar("Philco", "PW8F", 21, 15, 15))
 
-    fridgeManager.print_fridges()
+    print(fridgeManager)
+
+    # Виклик методу get_attributes_by_type() для отримання словника з атрибутами типу int для кожного об'єкта
+    int_attributes = fridgeManager.get_attributes_by_type(int)
+    print("Attributes with type int for each fridge:")
+    for fridge, attributes in int_attributes.items():
+        print(fridge)
+        print(attributes)
+
+    # Виклик методу check_condition() для перевірки умови всіх та будь-якого об'єкта
+    condition = lambda fridge: fridge.capacity > 100
+    condition_result = fridgeManager.check_condition(condition)
+    print("Condition result:")
+    print(condition_result)
 
     capacityFridges = fridgeManager.find_fridge_with_capacity(60)
     print("Fridges with capacity 60:")
