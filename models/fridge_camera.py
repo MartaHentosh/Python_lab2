@@ -1,7 +1,8 @@
 """
-module:fridge_camera
 This module provides Fridge Camera class
 """
+from decorator import logged
+from invalid_brand_exception import InvalidBrandException
 from models.fridge import Fridge
 
 
@@ -20,6 +21,14 @@ class FridgeCamera(Fridge):
 
     def get_max_usable_capacity(self):
         return self.max_sausage_weight / self.VOLUME_PER_KILOGRAM
+
+    @logged(InvalidBrandException, "file")
+    def check_brand(self):
+        """
+        This method checks if the brand of the fridge is valid.
+        """
+        if self.brand == "InvalidBrand":
+            raise InvalidBrandException(self.brand)
 
     def __str__(self):
         return f"FridgeCamera: {self.brand}, {self.model}, {self.capacity}, {self.entries}, " \
